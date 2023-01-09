@@ -1,5 +1,5 @@
 # Set Authentication
-from yaml import safe_load 
+from yaml import safe_load
 import os
 
 # Get The Credentials 
@@ -15,10 +15,10 @@ PASSWORD = dvc_config["PASSWORD"]
 meta_data = credentials["metadata_path"]
 RAW_DATA_PATH = meta_data["RAW_DATA_PATH"]
 
-os.system("dvc remote add origin {}".format(DVC_REMOTE_URL))
+os.system(f"dvc remote add origin {DVC_REMOTE_URL}")
 os.system("dvc remote modify origin --local auth basic")
-os.system("dvc remote modify origin --local user {}".format(USERNAME))
-os.system("dvc remote modify origin --local password {}".format(PASSWORD))
+os.system(f"dvc remote modify origin --local user {USERNAME}")
+os.system(f"dvc remote modify origin --local password {PASSWORD}")
 
 # Get data from DVC
-os.system("dvc pull -r origin {}".format(RAW_DATA_PATH))
+os.system(f"dvc pull -r origin {RAW_DATA_PATH}")
