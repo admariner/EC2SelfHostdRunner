@@ -16,11 +16,10 @@ def prepare_data(path_data):
 def encode_sentiments_values(df):
     
     possible_sentiments = df.airline_sentiment.unique()
-    sentiment_dict = {}
-    
-    for index, possible_sentiment in enumerate(possible_sentiments):
-        sentiment_dict[possible_sentiment] = index
-    
+    sentiment_dict = {
+        possible_sentiment: index
+        for index, possible_sentiment in enumerate(possible_sentiments)
+    }
     # Encode all the sentiment values
     df['label'] = df.airline_sentiment.replace(sentiment_dict)
 
